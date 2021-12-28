@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace workflow_engine
 {
-    public interface IWorkflow
+    internal class Call : ITask
     {
-        void Add(ITask task);
-        void Remove(ITask task);
-        IEnumerable<ITask> GetTasks();
+        public void Execute()
+        {
+        Console.WriteLine("Call the service");
+        }
     }
 }

@@ -8,24 +8,26 @@ namespace workflow_engine
 {
     public class Workflow : IWorkflow
     {
-        public void Call(string message)
+        private readonly List<ITask> _tasks;
+
+        public Workflow()
         {
-            Console.WriteLine(message);
+            _tasks = new List<ITask>();
         }
 
-        public void Email(string message)
+        public void Add(ITask task)
         {
-            Console.WriteLine(message);
+            _tasks.Add(task);
         }
 
-        public void Status(string message)
+        public void Remove(ITask task)
         {
-            Console.WriteLine(message);
+            _tasks.Remove(task);
         }
 
-        public void Upload(string message)
+        public IEnumerable<ITask> GetTasks()
         {
-            Console.WriteLine(message);
+            return _tasks;
         }
     }
 }

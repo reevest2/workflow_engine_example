@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace workflow_engine
 {
-    public interface IWorkflow
+    public interface ITask
     {
-        void Add(ITask task);
-        void Remove(ITask task);
-        IEnumerable<ITask> GetTasks();
+        void Execute();
     }
 }

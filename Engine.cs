@@ -8,18 +8,12 @@ namespace workflow_engine
 {
     public class Engine
     {
-        private readonly IWorkflow _workflow;
-        public Engine(IWorkflow workflow)
+        public void Run(IWorkflow workflow)
         {
-            _workflow = workflow;
-        }
-
-        public void Execute()
-        {
-            _workflow.Upload("Uploading video");
-            _workflow.Email("Emailing video");
-            _workflow.Call("Calling third party service");
-            _workflow.Status("Upadting video status");
+            foreach (ITask task in workflow.GetTasks())
+            {
+                task.Execute();
+            }
         }
     }
 }
